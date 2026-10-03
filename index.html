@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejlal Export | Premium Global Fruit & Vegetable Exporter</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           CSS VARIABLES & RESET
+           ========================================= */
+        :root {
+            --navy: #0A2540;
+            --navy-light: #133B5C;
+            --gold: #D4AF37;
+            --gold-hover: #F1C40F;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-light: #F8F9FA;
+            --white: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* =========================================
+           UTILITY CLASSES
+           ========================================= */
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-hover);
+            border-color: var(--gold-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: var(--white);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Scroll Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           NAVIGATION
+           ========================================= */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(10, 37, 64, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .logo i {
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .hero-content h1 span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 45px;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* =========================================
+           STATS BAR
+           ========================================= */
+        .stats-bar {
+            background: var(--navy);
+            color: var(--white);
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item i {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .stat-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* =========================================
+           ABOUT SECTION
+           ========================================= */
+        .about {
+            background: var(--bg-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--navy);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .about-text h2 span {
+            color: var(--gold);
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .about-features {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .feature-item i {
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        /* =========================================
+           PRODUCTS SECTION
+           ========================================= */
+        .products {
+            background: var(--white);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--navy);
+            color: var(--gold);
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .product-info {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .product-link {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .product-link:hover {
+            color: var(--navy);
+        }
+
+        /* =========================================
+           SERVICES SECTION
+           ========================================= */
+        .services {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-box {
+            padding: 40px 30px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: var(--transition);
+        }
+
+        .service-box:hover {
+            background: rgba(212, 175, 55, 0.05);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .service-box i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .service-box h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-box p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           CONTACT SECTION
+           ========================================= */
+        .contact-section {
+            background: var(--bg-light);
+            text-align: center;
+        }
+
+        .contact-card {
+            background: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--gold);
+        }
+
+        .contact-card h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 15px;
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .contact-info-item i {
+            font-size: 1.8rem;
+            color: var(--gold);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--white);
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-info-item h4 {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .contact-info-item a, .contact-info-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background: #07192B;
+            color: rgba(255,255,255,0.6);
+            padding: 60px 0 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--white);
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-socials a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .footer-socials a:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+           ========================================= */
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 3.5rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 50px; }
+            .about-img img { height: 450px; }
+            .contact-info-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--navy);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: var(--transition);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+                border-left: 1px solid rgba(212, 175, 55, 0.2);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-btns { flex-direction: column; gap: 15px; }
+            .section-title { font-size: 2.2rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-card { padding: 30px 20px; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .about-features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <!-- Updated Logo Name -->
+            <a href="#" class="logo"><i class="fas fa-leaf"></i> EJLAL <span>EXPORT</span></a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#products" onclick="closeMenu()">Products</a></li>
+                <li><a href="#services" onclick="closeMenu()">Global Reach</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1 class="reveal">Premium Global<br><span>Fresh Produce</span> Export</h1>
+            <p class="reveal">Connecting the finest farms to international markets. We specialize in exporting high-quality fresh fruits and vegetables with reliable cold-chain logistics.</p>
+            <div class="hero-btns reveal">
+                <a href="#products" class="btn btn-primary">View Our Products</a>
+                <a href="#contact" class="btn btn-outline">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATS BAR ================= -->
+    <div class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item reveal">
+                <i class="fas fa-clock"></i>
+                <h3>24/7</h3>
+                <p>Global Support</p>
+            </div>
+            <div class="stat-item reveal">
+                <i class="fas fa-plane-departure"></i>
+                <h3>50+</h3>
+                <p>Countries Served</p>
+            </div>
+            <div class="stat-item reveal">
+                <i class="fas fa-box-open"></i>
+                <h3>100%</h3>
+                <p>Fresh & Organic</p>
+            </div>
+            <div class="stat-item reveal">
+                <i class="fas fa-snowflake"></i>
+                <h3>Cold Chain</h3>
+                <p>Guaranteed Freshness</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= ABOUT SECTION ================= -->
+    <section id="about" class="about section-padding">
+        <div class="container about-grid">
+            <div class="about-img reveal">
+                <img src="https://images.unsplash.com/photo-1595855759920-86582396756a?q=80&w=2070&auto=format&fit=crop" alt="Ejlal Export Farm Fresh Produce">
+            </div>
+            <div class="about-text reveal">
+                <h2>Rooted in Quality,<br>Grown for <span>Global Trade.</span></h2>
+                <p>Welcome to <strong>Ejlal Export (Zaid Ltd)</strong>, founded and owned by Mohd Zaid. We are a premier export house dedicated to bringing the rich agricultural bounty of India to the world.</p>
+                <p>With a deep understanding of international market standards, we ensure that every shipment meets the highest quality, safety, and freshness requirements. From farm to port, we handle the entire supply chain with precision.</p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>ISO Certified Quality</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Global Logistics Network</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Custom Packaging</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Competitive Pricing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PRODUCTS SECTION ================= -->
+    <section id="products" class="products section-padding">
+        <div class="container">
+            <h2 class="section-title reveal">Our Premium Products</h2>
+            <p class="section-subtitle reveal">We source directly from trusted farms to ensure the highest quality for our international buyers.</p>
+            
+            <div class="product-grid">
+                <!-- Product 1: Fresh Fruits -->
+                <div class="product-card reveal">
+                    <div class="product-img">
+                        <span class="product-badge">Top Export</span>
+                        <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=2070&auto=format&fit=crop" alt="Fresh Fruits">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fresh Fruits</h3>
+                        <p>Premium quality mangoes, bananas, pomegranates, grapes, and citrus fruits.</p>
+                        <a href="https://wa.me/919548753214?text=Hello%20Ejlal%20Export,%20I%20am%20interested%20in%20your%20Fresh%20Fruits.%20Please%20share%20the%20catalog." target="_blank" class="product-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Product 2: Fresh Vegetables -->
+                <div class="product-card reveal">
+                    <div class="product-img">
+                        <span class="product-badge">High Demand</span>
+                        <img src="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?q=80&w=2070&auto=format&fit=crop" alt="Fresh Vegetables">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fresh Vegetables</h3>
+                        <p>Farm-fresh onions, potatoes, tomatoes, green chillies, and exotic vegetables.</p>
+                        <a href="https://wa.me/919548753214?text=Hello%20Ejlal%20Export,%20I%20am%20interested%20in%20your%20Fresh%20Vegetables.%20Please%20share%20the%20catalog." target="_blank" class="product-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Product 3: Organic Selection -->
+                <div class="product-card reveal">
+                    <div class="product-img">
+                        <span class="product-badge">Premium</span>
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=2070&auto=format&fit=crop" alt="Organic Produce">
+                    </div>
+                    <div class="product-info">
+                        <h3>Organic Selection</h3>
+                        <p>Certified organic fruits and vegetables for health-conscious global markets.</p>
+                        <a href="https://wa.me/919548753214?text=Hello%20Ejlal%20Export,%20I%20am%20interested%20in%20your%20Organic%20Selection.%20Please%20share%20the%20catalog." target="_blank" class="product-link">Inquire Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICES SECTION ================= -->
+    <section id="services" class="services section-padding">
+        <div class="container">
+            <h2 class="section-title reveal" style="color: var(--white);">Why Partner With Us?</h2>
+            <p class="section-subtitle reveal" style="color: rgba(255,255,255,0.7);">We handle the complexity of global trade so you can focus on your business.</p>
+            
+            <div class="services-grid">
+                <div class="service-box reveal">
+                    <i class="fas fa-truck-fast"></i>
+                    <h3>Global Logistics</h3>
+                    <p>Efficient air and sea freight solutions to any major port worldwide, ensuring timely delivery.</p>
+                </div>
+                <div class="service-box reveal">
+                    <i class="fas fa-temperature-low"></i>
+                    <h3>Cold Chain Management</h3>
+                    <p>State-of-the-art refrigerated containers and storage to maintain peak freshness during transit.</p>
+                </div>
+                <div class="service-box reveal">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Quality Assurance</h3>
+                    <p>Rigorous inspection and phytosanitary certification for every shipment before it leaves the farm.</p>
+                </div>
+                <div class="service-box reveal">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Our dedicated trade desk is available around the clock to assist with your inquiries and orders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section id="contact" class="contact-section section-padding">
+        <div class="container">
+            <div class="contact-card reveal">
+                <h2>Ready to Import?</h2>
+                <p>Contact our founder, <strong>Mohd Zaid</strong>, directly for pricing, catalogs, and logistics coordination.</p>
+                
+                <div class="contact-info-grid">
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Phone / WhatsApp</h4>
+                            <a href="tel:+919548753214">+91 95487 53214</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Address</h4>
+                            <a href="mailto:ejlalexport@gmail.com">ejlalexport@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/919548753214?text=Hello%20Ejlal%20Export,%20I%20am%20interested%20in%20importing%20fresh%20fruits%20and%20vegetables.%20Please%20provide%20your%20product%20catalog%20and%20pricing." target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp: +91 95487 53214
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">EJLAL <span>EXPORT</span></div>
+            <p style="margin-bottom: 20px; color: rgba(255,255,255,0.5);">Zaid Ltd | Founder & Owner: Mohd Zaid</p>
+            
+            <div class="footer-socials">
+                <a href="https://wa.me/919548753214" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:ejlalexport@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 <span>Ejlal Export</span>. All Rights Reserved.</p>
+                <p>Connecting Global Markets with Fresh Produce.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        /* --- Mobile Menu Toggle --- */
+        const navLinks = document.getElementById('navLinks');
+        function toggleMenu() {
+            navLinks.classList.toggle('active');
+        }
+        function closeMenu() {
+            navLinks.classList.remove('active');
+        }
+
+        /* --- Navbar Scroll Effect --- */
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        /* --- Scroll Reveal Animation --- */
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+  </html>
